@@ -1,5 +1,8 @@
 const express = require("express");
+const routes = require("./routes/index");
 
-const api = express();
+const server = express();
 
-module.exports = api;
+server.use("/", routes);
+
+module.exports = server;
