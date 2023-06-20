@@ -2,7 +2,7 @@ const errorCatching = (err, req, res, next) => {
     const status = err.status || 500;
     const message = err.message || message;
 
-    console.error(error);
+    console.error(err);
     res.status(status).json({ error: message });
 }
 
