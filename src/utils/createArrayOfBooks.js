@@ -7,10 +7,10 @@ const createArrayOfBooks = () => {
             id: i,
             name: faker.lorem.words(3),
             release_date: faker.date.past,
-            pages: faker.number.int(min = 39, max = 1500),
-            languaje: faker.number.int(min = 0, max = 10),
-            authorId: faker.number.int(min = 0, max = 49),
-            editorialId: faker.number.int(min = 0, max = 8),
+            pages: faker.number.int(1500),
+            languaje: "English",
+            authorId: faker.number.int(49),
+            editorialId: faker.number.int(8),
             genre: [],
             users: []
         }
