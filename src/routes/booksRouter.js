@@ -1,8 +1,9 @@
 const { Router } = require("express");
-const { getBooksHandler } = require("../handlers/booksHandlers")
+const { getBooksHandler, bulkCreateBooksHandler } = require("../handlers/booksHandlers")
 
 const booksRouter = Router()
 
 booksRouter.get("/", getBooksHandler);
+booksRouter.post("/bulkcreate", bulkCreateBooksHandler);
 
 module.exports = booksRouter;

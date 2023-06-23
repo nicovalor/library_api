@@ -1,8 +1,13 @@
 const prisma = require("../prisma")
 
 const getAllBooks = async () => {
-    const allBooks = await prisma.Book.findMany()
+    const allBooks = await prisma.book.findMany()
     return allBooks;
 }
 
-module.exports = getAllBooks;
+const bulkCreateBooks = async (data) => {
+    const books = await prisma.book.createMany(data);
+    return data;
+}
+
+module.exports = { getAllBooks, bulkCreateBooks };
