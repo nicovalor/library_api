@@ -5,9 +5,4 @@ const getAllBooks = async () => {
     return allBooks;
 }
 
-const bulkCreateBooks = async (data) => {
-    const books = await prisma.book.createMany(data);
-    return data;
-}
-
 module.exports = { getAllBooks, bulkCreateBooks };
