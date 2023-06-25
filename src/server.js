@@ -3,6 +3,7 @@ const routes = require("./routes/index");
 const { errorCatching } = require("./middlewares/errorCatching")
 
 const server = express();
+server.use(express.json());
 
 server.use("/", routes);
 
