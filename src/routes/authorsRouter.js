@@ -3,6 +3,6 @@ const { postNewAuthor } = require("../handlers/authorsHandlers");
 
 const authorsRouter = Router()
 
-authorsRouter.post("/author", postNewAuthor);
+authorsRouter.post("/", postNewAuthor);
 
 module.exports = authorsRouter;
