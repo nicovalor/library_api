@@ -5,4 +5,4 @@ const getAllBooks = async () => {
     return allBooks;
 }
 
-module.exports = { getAllBooks, bulkCreateBooks };
+module.exports = { getAllBooks };

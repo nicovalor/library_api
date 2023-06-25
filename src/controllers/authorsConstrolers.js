@@ -1,8 +1,10 @@
 const prisma = require("../prisma")
 
-const postAuthor = async (data) => {
-    const author = await prisma.author.create(data)
-    return data;
+const postAuthor = async (authorData) => {
+    const author = await prisma.author.create({
+        data: authorData,
+    });
+    return author;
 }
 
 module.exports = { postAuthor };
