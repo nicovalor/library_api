@@ -1,4 +1,4 @@
-const { getAllBooks, bulkCreateBooks } = require("../controllers/booksControllers");
+const { getAllBooks, createNewBook } = require("../controllers/booksControllers");
 
 
 const getBooksHandler = async (req, res) => {
@@ -10,5 +10,15 @@ const getBooksHandler = async (req, res) => {
     }
 }
 
+const postBookHandler = async (req, res) => {
+    try {
+        const book = req.body
+        await createNewBook(book);
+        res.status(201).json(book);
+    } catch (error) {
+        res.status(400).json({ error: error.message })
+    }
+}
 
-module.exports = { getBooksHandler }
+
+module.exports = { getBooksHandler, postBookHandler }

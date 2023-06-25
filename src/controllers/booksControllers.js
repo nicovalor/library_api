@@ -5,4 +5,12 @@ const getAllBooks = async () => {
     return allBooks;
 }
 
-module.exports = { getAllBooks };
+const createBookHandler = async (newBook) => {
+    const book = await prisma.book.create({
+        data: newBook,
+    })
+
+    return book;
+}
+
+module.exports = { getAllBooks, createBookHandler };
