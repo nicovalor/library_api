@@ -1,4 +1,5 @@
 const { getAllBooks, createBook } = require("../controllers/booksControllers");
+const { author } = require("../prisma");
 
 
 const getBooksHandler = async (req, res) => {
@@ -13,13 +14,13 @@ const getBooksHandler = async (req, res) => {
 const postBookHandler = async (req, res) => {
     try {
         const book = req.body;
-        const id = req.query;
-        if (!id) {
+        const { authorId } = req.query;
+        if (!authorId) {
             const createdBook = await createBook(book);
             res.status(201).json(createdBook);
         }
         else {
-            const createdBook = await createBook(book, id);
+            const createdBook = await createBook(book, authorId);
             res.status(201).json(createdBook);
         }
 

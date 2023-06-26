@@ -5,6 +5,6 @@ const booksRouter = Router()
 
 booksRouter.get("/", getBooksHandler);
 
-booksRouter.post("/:id", postBookHandler);
+booksRouter.post("/", postBookHandler);
 
 module.exports = booksRouter;
