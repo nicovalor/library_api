@@ -1,4 +1,4 @@
-const { getAllBooks, createNewBook } = require("../controllers/booksControllers");
+const { getAllBooks, createBook } = require("../controllers/booksControllers");
 
 
 const getBooksHandler = async (req, res) => {
@@ -12,9 +12,17 @@ const getBooksHandler = async (req, res) => {
 
 const postBookHandler = async (req, res) => {
     try {
-        const book = req.body
-        await createNewBook(book);
-        res.status(201).json(book);
+        const book = req.body;
+        const id = req.query;
+        if (!id) {
+            const createdBook = await createBook(book);
+            res.status(201).json(createdBook);
+        }
+        else {
+            const createdBook = await createBook(book, id);
+            res.status(201).json(createdBook);
+        }
+
     } catch (error) {
         res.status(400).json({ error: error.message })
     }

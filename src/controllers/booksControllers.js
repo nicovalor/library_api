@@ -5,12 +5,26 @@ const getAllBooks = async () => {
     return allBooks;
 }
 
-const createBookHandler = async (newBook) => {
+const createBook = async (newBook, id) => {
+    if (!id) {
+        const book = await prisma.book.create({
+            data: newBook,
+        })
+        return book;
+    }
+
     const book = await prisma.book.create({
-        data: newBook,
-    })
+        data: {
+            ...book,
+            books: {
+                connect: {
+                    id: id
+                }
+            }
+        }
+    });
 
     return book;
 }
 
-module.exports = { getAllBooks, createBookHandler };
+module.exports = { getAllBooks, createBook };
