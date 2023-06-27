@@ -18,18 +18,17 @@ model Author {
 }
 
 model Book {
-    id           String    @id @default(uuid())
-    name         String    @db.VarChar(255)
-    release_date DateTime  @db.Date
-    pages        Int       @db.Integer
-    language     String    @db.VarChar(255)
-    stock        Int       @db.Integer
-    author       Author    @relation(fields: [authorId], references: [id])
-    authorId     String
-    editorial    Editorial @relation(fields: [editorialId], references: [id])
-    editorialId  String
-    genre        Genre[]   @relation("GenreOnBooks")
-    users        User[]    @relation("BooksOnUsers")
+    id          String    @id @default(uuid())
+    name        String    @db.VarChar(255)
+    pages       Int       @db.Integer
+    language    String    @db.VarChar(255)
+    stock       Int       @db.Integer
+    author      Author    @relation(fields: [authorId], references: [id])
+    authorId    String
+    editorial   Editorial @relation(fields: [editorialId], references: [id])
+    editorialId String
+    genre       Genre[]   @relation("GenreOnBooks")
+    users       User[]    @relation("BooksOnUsers")
 }
 
 model Editorial {
