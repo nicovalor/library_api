@@ -1,5 +1,4 @@
 const { getAllBooks, createBook } = require("../controllers/booksControllers");
-const { author } = require("../prisma");
 
 
 const getBooksHandler = async (req, res) => {
