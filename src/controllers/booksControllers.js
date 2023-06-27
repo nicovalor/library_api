@@ -5,26 +5,30 @@ const getAllBooks = async () => {
     return allBooks;
 }
 
-const createBook = async (newBook, id) => {
-    if (!id) {
-        const book = await prisma.book.create({
-            data: newBook,
-        })
-        return book;
+const createBook = async (newBook, authorId, editorialId) => {
+    if (!authorId || !editorialId) {
+        throw Error("authorId and editorialId are required")
     }
 
-    const book = await prisma.book.create({
+    const newBookWithId = await prisma.book.create({
         data: {
-            ...book,
-            books: {
+            ...newBook,
+            author: {
                 connect: {
-                    id: id
+                    id: authorId
                 }
+            },
+            editorial: {
+                connect: { id: editorialId }
             }
+        },
+        include: {
+            author: true,
+            editorial: true,
         }
     });
 
-    return book;
+    return newBookWithId;
 }
 
 module.exports = { getAllBooks, createBook };
