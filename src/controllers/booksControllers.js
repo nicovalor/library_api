@@ -6,7 +6,9 @@ const getAllBooks = async () => {
 }
 
 const getBookById = async (id) => {
-    const book = await prisma.book.findUnique(id);
+    const book = await prisma.book.findUnique({
+        where: { id: id },
+    });
     return book;
 }
 
