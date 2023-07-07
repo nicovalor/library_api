@@ -5,8 +5,8 @@ const getAllBooks = async () => {
     return allBooks;
 }
 
-const createBook = async (newBook, authorId, editorialId) => {
-    if (!authorId || !editorialId) {
+const createBook = async (newBook, authorId, editorialName) => {
+    if (!authorId || !editorialName) {
         throw Error("authorId and editorialId are required")
     }
 
@@ -19,7 +19,7 @@ const createBook = async (newBook, authorId, editorialId) => {
                 }
             },
             editorial: {
-                connect: { id: editorialId }
+                connect: { name: editorialName }
             }
         },
         include: {

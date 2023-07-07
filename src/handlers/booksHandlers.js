@@ -13,13 +13,13 @@ const getBooksHandler = async (req, res) => {
 const postBookHandler = async (req, res) => {
     try {
         const book = req.body;
-        const { authorId, editorialId } = req.query;
+        const { authorId, editorialName } = req.query;
         if (!authorId) {
             const createdBook = await createBook(book);
             res.status(201).json(createdBook);
         }
         else {
-            const createdBook = await createBook(book, authorId, editorialId);
+            const createdBook = await createBook(book, authorId, editorialName);
             res.status(201).json(createdBook);
         }
 
