@@ -5,6 +5,11 @@ const getAllBooks = async () => {
     return allBooks;
 }
 
+const getBookById = async (id) => {
+    const book = await prisma.book.findUnique(id);
+    return book;
+}
+
 const createBook = async (newBook, authorId, editorialName) => {
     if (!authorId || !editorialName) {
         throw Error("authorId and editorialId are required")
@@ -31,4 +36,4 @@ const createBook = async (newBook, authorId, editorialName) => {
     return newBookWithId;
 }
 
-module.exports = { getAllBooks, createBook };
+module.exports = { getAllBooks, createBook, getBookById };
