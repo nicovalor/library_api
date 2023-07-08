@@ -1,13 +1,12 @@
 const { postEditorial } = require("../controllers/editorialControllers");
+const { catchAsync } = require("../utils");
 
 const postEditorialHandler = async (req, res) => {
-    try {
-        const newEditorial = req.body;
-        const editorial = postEditorial(newEditorial);
-        res.status(201).json(editorial);
-    } catch (error) {
-        res.status(400).json({ error: error.message })
-    }
+    const newEditorial = req.body;
+    const editorial = postEditorial(newEditorial);
+    res.status(201).json(editorial);
 }
 
-module.exports = { postEditorialHandler }
+module.exports = {
+    postEditorialHandler: catchAsync(postEditorialHandler),
+}

@@ -1,13 +1,12 @@
-const { postAuthor } = require("../controllers/authorsConstrolers")
+const { postAuthor } = require("../controllers/authorsConstrolers");
+const { catchAsync } = require("../utils");
 
 const postNewAuthor = async (req, res) => {
-    try {
-        const data = req.body;
-        const author = await postAuthor(data);
-        res.status(201).json(author);
-    } catch (error) {
-        res.status(400).json({ error: error.message })
-    }
+    const data = req.body;
+    const author = await postAuthor(data);
+    res.status(201).json(author);
 }
 
-module.exports = { postNewAuthor };
+module.exports = {
+    postNewAuthor: catchAsync(postNewAuthor),
+};
