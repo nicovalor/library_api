@@ -4,7 +4,7 @@ const { catchAsync } = require("../utils");
 const postEditorialHandler = async (req, res) => {
     const newEditorial = req.body;
     const editorial = postEditorial(newEditorial);
-    res.status(201).json(editorial);
+    response(res, 201, editorial);
 }
 
 module.exports = {
